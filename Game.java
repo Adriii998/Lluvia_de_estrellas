@@ -15,16 +15,11 @@ public class Game {
       Jorge prueva pull
     */
     
-    int puntuacion;
-    int nivel;
+   
+    Vista vista=new Vista();
     
-	barramenu
-	
-    new Vista();
-    
-    new ControlMenu(vista);
-    new controlLetras(vista);
-    new Controlbarra(vista);
+    ControlMenu controlMenu=new ControlMenu(vista);
+ 
     
     
     
