@@ -31,10 +31,13 @@ public class JmenuBar {
     private JMenuItem level5;
     private ControlMenu controlMenu;
     private JMenuBar jmenubar;
+    private ControlMenu control;
 
     public JmenuBar() {
-        
-           creaMenu();
+            
+          control=new ControlMenu();
+          creaMenu();
+          anadirEscuchadores();
         
     }
 
@@ -77,7 +80,6 @@ public class JmenuBar {
         jmenubar.add(archivo);
         jmenubar.add(level);
         
-        
       
 
     }
@@ -85,7 +87,7 @@ public class JmenuBar {
     
     
     
-    public void anadirEscuchadores(ActionListener control){
+    public void anadirEscuchadores(){
         
         salir.addActionListener(control);
         guardar.addActionListener(control);
@@ -100,6 +102,7 @@ public class JmenuBar {
     }
 
     public JMenuBar getJmenubar() {
+        
         return jmenubar;
     }
 

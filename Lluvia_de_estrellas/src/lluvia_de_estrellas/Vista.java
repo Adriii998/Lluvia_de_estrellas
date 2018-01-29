@@ -16,21 +16,22 @@ import javax.swing.JMenuBar;
  */
 public class Vista extends JFrame{
     
+    private JmenuBar menu;
+    
     public Vista(){
         
     
         this.setTitle("LLuvia Estrellas");
         this.setBounds(500, 300, 600, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menu=new JmenuBar();
+        this.setJMenuBar(menu.getJmenubar());
         this.setVisible(true);
         
     }
     
-    public void anadirMenubar(JMenuBar barra){
-        
-        this.setJMenuBar(barra);
-         this.setVisible(true);
-    }
-
+    
+    
+  
     
 }

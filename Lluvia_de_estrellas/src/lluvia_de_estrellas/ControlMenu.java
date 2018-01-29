@@ -15,17 +15,14 @@ import javax.swing.JMenuBar;
  */
 public class ControlMenu implements ActionListener{
   
-    private JmenuBar menu;
+  
+    private Game game;
     
     
     
-    public ControlMenu(Vista vista){
+    public ControlMenu(){
         
         
-        menu=new JmenuBar();
-        menu.anadirEscuchadores(this);//anade escuchadores
-        vista.anadirMenubar(menu.getJmenubar());//le pasamos el menubar a la vista
-
        
         
     }

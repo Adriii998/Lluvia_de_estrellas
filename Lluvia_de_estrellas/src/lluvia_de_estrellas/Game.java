@@ -12,17 +12,14 @@ package lluvia_de_estrellas;
 public class Game {
     
     /*
-    
+      Jorge prueva pull
     */
     
-    int puntuacion;
-    int nivel;
+   
+    Vista vista=new Vista();
     
-    new Vista();
-    
-    new ControlMenu(vista);
-    new controlLetras(vista);
-    new Controlbarra(vista);
+ 
+ 
     
     
     
