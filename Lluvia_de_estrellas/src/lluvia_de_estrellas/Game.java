@@ -11,19 +11,20 @@ package lluvia_de_estrellas;
  */
 public class Game {
     
-    /*
+    private Vista view;
+    private ControlLetras ctrlLetras;
     
-    */
-    
-    int puntuacion;
-    int nivel;
-    
-    new Vista();
-    
-    new ControlMenu(vista);
-    new controlLetras(vista);
-    new Controlbarra(vista);
+    public Game(){
+        view=new Vista();
+        ctrlLetras=new ControlLetras(this);
+    }
     
     
+    public void vistaAddEscuchadorLetras(){
+    }
+    
+    public void mandarLetra(JButton btn){
+        view.addLetra(btn);
+    }
     
 }
