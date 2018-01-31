@@ -5,6 +5,7 @@
  */
 package lluvia_de_estrellas;
 
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,6 +34,7 @@ public class Vista extends JFrame {
     }
 
     public void deleteLetra(String letra) {
+        this.remove(botones.get(getPosicionLetra(letra)));
         botones.remove(getPosicionLetra(letra));
     }
 
@@ -43,6 +45,10 @@ public class Vista extends JFrame {
             }
         }
         return -1;
+    }
+    
+    public void addEscuchadorLetras(KeyListener control){
+        this.addKeyListener(control);
     }
 
 }

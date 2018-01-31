@@ -62,7 +62,6 @@ public class NewLetras {
         boton = new JButton(generarLetra());
         //de momento es 50 por poner algo
         boton.setBounds(posXAleatoria(), 0, WIDTHPANEL, HEIGHTPANEL);
-        
         botones.add(boton);
         
         return boton;
@@ -78,7 +77,7 @@ public class NewLetras {
         System.out.println("posibles.leng->" + posibles.length());
 
         //coge una letra
-        seleccionada = "" + posibles.charAt(getPosicion());
+        //seleccionada = "" + posibles.charAt(getPosicion());
 
         while (usadas.contains(seleccionada) && usadas.length()<posibles.length()) {
             //coge una letra

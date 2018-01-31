@@ -32,6 +32,7 @@ public class ControlLetras implements KeyListener {
         });
         letras=new NewLetras(this);
         this.juego=game;
+        game.vistaAddEscuchadorLetras(this);
         timer.start();
     }
 
@@ -39,7 +40,10 @@ public class ControlLetras implements KeyListener {
     public void keyTyped(KeyEvent e) {
         String pulsada=(""+e.getKeyChar()).toUpperCase();
         if(letras.teclaPulsada(pulsada)){
-            
+            System.out.println("CORRECTA_________________________");
+            juego.eliminarLetra(pulsada);
+        }else{
+            //juego.error();
         }
     }
 

@@ -9,6 +9,7 @@ package lluvia_de_estrellas;
  *
  * @author adri
  */
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
 
 public class Game {
@@ -23,11 +24,16 @@ public class Game {
     }
     
     
-    public void vistaAddEscuchadorLetras(){
+    public void vistaAddEscuchadorLetras(KeyListener escucha){
+        view.addEscuchadorLetras(escucha);
     }
     
     public void mandarLetra(JButton btn){
         view.addLetra(btn);
+    }
+    
+    public void eliminarLetra(String letra){
+        view.deleteLetra(letra);
     }
     
 }
