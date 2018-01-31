@@ -6,7 +6,6 @@
 package lluvia_de_estrellas;
 
 /**
- *
  * @author adri
  */
 public class Lluvia_de_estrellas {
@@ -15,7 +14,7 @@ public class Lluvia_de_estrellas {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Game juego=new Game();
     }
     
 }
