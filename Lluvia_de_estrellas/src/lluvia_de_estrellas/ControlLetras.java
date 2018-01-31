@@ -32,6 +32,7 @@ public class ControlLetras implements KeyListener {
         });
         letras=new NewLetras(this);
         this.juego=game;
+        timer.start();
     }
 
     @Override
@@ -54,7 +55,8 @@ public class ControlLetras implements KeyListener {
     
     
     public void nuevaLetra(){
-        
+        System.out.println("nueva letra");
+        juego.mandarLetra(letras.getLetra());
     }
     
 }

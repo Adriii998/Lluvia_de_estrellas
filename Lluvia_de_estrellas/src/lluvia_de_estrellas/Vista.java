@@ -13,35 +13,36 @@ import javax.swing.JFrame;
  *
  * @author adri
  */
-public class Vista extends JFrame{
-    
-    ArrayList <JButton> botones;
-    
-    public Vista(){
-        this.setBounds(50,50,500,500);
+public class Vista extends JFrame {
+
+    ArrayList<JButton> botones;
+
+    public Vista() {
+        this.setBounds(50, 50, 500, 500);
         this.setLayout(null);
-        
-        botones=new ArrayList();
-        
+
+        botones = new ArrayList();
+
         this.setVisible(true);
     }
-    
-    public void addLetra(JButton boton){
+
+    public void addLetra(JButton boton) {
         botones.add(boton);
+        this.add(boton);
+        this.repaint();
     }
-    
-    public void deleteLetra(String letra){
+
+    public void deleteLetra(String letra) {
         botones.remove(getPosicionLetra(letra));
     }
-    
-    public int getPosicionLetra(String letra){
+
+    public int getPosicionLetra(String letra) {
         for (int i = 0; i < botones.size(); i++) {
-            if(botones.get(i).getActionCommand().equals(letra)){
+            if (botones.get(i).getActionCommand().equals(letra)) {
                 return i;
             }
         }
         return -1;
     }
-    
-    
+
 }

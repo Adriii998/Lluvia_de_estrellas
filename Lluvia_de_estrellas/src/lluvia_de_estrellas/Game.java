@@ -9,6 +9,8 @@ package lluvia_de_estrellas;
  *
  * @author adri
  */
+import javax.swing.JButton;
+
 public class Game {
     
     private Vista view;
@@ -17,6 +19,7 @@ public class Game {
     public Game(){
         view=new Vista();
         ctrlLetras=new ControlLetras(this);
+        JButton boton;
     }
     
     
