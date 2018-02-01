@@ -32,9 +32,10 @@ public class JmenuBar {
     private ControlMenu controlMenu;
     private JMenuBar jmenubar;
     private ControlMenu control;
+    private Game game;
 
-    public JmenuBar() {
-            
+    public JmenuBar(Game game) {
+          this.game=game;
           control=new ControlMenu();
           creaMenu();
           anadirEscuchadores();
@@ -43,7 +44,7 @@ public class JmenuBar {
 
     public void creaMenu() {
 
-         jmenubar = new JMenuBar();
+        jmenubar = new JMenuBar();
         //menus
         archivo = new JMenu("ARCHIVO");
         level = new JMenu("LEVEL");

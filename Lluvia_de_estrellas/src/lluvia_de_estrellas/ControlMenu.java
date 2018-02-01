@@ -39,7 +39,7 @@ public class ControlMenu implements ActionListener{
         
         switch (accion) {
             case "SALIR":
-                System.out.println("Salir");
+                   System.exit(0);
                 break;
             case "GUARDAR":
                   System.out.println("Guardar");

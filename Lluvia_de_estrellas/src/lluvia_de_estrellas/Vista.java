@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 public class Vista extends JFrame{
     
     private JmenuBar menu;
+    private Game game;
     
     public Vista(){
         
@@ -24,7 +25,7 @@ public class Vista extends JFrame{
         this.setTitle("LLuvia Estrellas");
         this.setBounds(500, 300, 600, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menu=new JmenuBar();
+        menu=new JmenuBar(game);
         this.setJMenuBar(menu.getJmenubar());
         this.setVisible(true);
         
