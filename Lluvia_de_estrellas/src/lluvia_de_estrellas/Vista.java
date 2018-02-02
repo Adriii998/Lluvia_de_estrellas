@@ -5,10 +5,12 @@
  */
 package lluvia_de_estrellas;
 
+import java.awt.Color;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,34 +18,63 @@ import javax.swing.JFrame;
  */
 public class Vista extends JFrame {
 
-    ArrayList<JButton> botones;
-    
+    ArrayList<JLabel> botones;
+
     //guille
-  private JFrame ventana;
+    
     private Bar bar;
     private Game game;
     private BarControl bc;
     private Jmenubar jmb;
-  
-    public Vista() {
-        ventana = new JFrame("BARRA");
+    
+    private JPanel panel;
+
+    public Vista(Game game) {
+        
+        this.setLayout(null);
+        
+        //probando cosas
+        //ventana = new JFrame("BARRA");
         bar = new Bar(game);
         jmb = new Jmenubar();
-        ventana.add(bar);
-        ventana.setJMenuBar(jmb.getJmenubar()); // Añadimos JMenuBar a la ventana
+        
+        panel=new JPanel();
+        panel.setBounds(0, 500, 800, 100);
+        panel.setBackground(Color.RED);
+        panel.add(bar);
+        this.add(panel);
+        
+        
+        //this.add(bar);
+        this.setJMenuBar(jmb.getJmenubar()); // Añadimos JMenuBar a la ventana
+        
+        
+        
+        
         //setFocusable(true);
-      botones=new ArrayList();
+        botones = new ArrayList();
 
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setBounds(0,0,800,600);
-        ventana.setResizable(false);
-        ventana.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(0, 0, 800, 600);
+        //ventana.setResizable(false);
+        this.setVisible(true);
     }
 
-    public void addLetra(JButton boton) {
-        botones.add(boton);
-        this.add(boton);
+    public void addLetra(JLabel letra) {
+        
+        
+        
+        JLabel label=new JLabel("No pinta hijo puta");
+        label.setBounds(50, 50, 50, 50);
+        this.add(label);
         this.repaint();
+        
+        
+        System.out.println("GENEROOOOOOOOOOOOOOOOOOOOO--"+letra.getText());
+        botones.add(letra);
+        this.add(letra);
+        this.repaint();
+        
     }
 
     public void deleteLetra(String letra) {
@@ -53,19 +84,19 @@ public class Vista extends JFrame {
 
     public int getPosicionLetra(String letra) {
         for (int i = 0; i < botones.size(); i++) {
-            if (botones.get(i).getActionCommand().equals(letra)) {
+            if (botones.get(i).getText().equals(letra)) {
                 return i;
             }
         }
         return -1;
     }
-    
-    public void addEscuchadorLetras(KeyListener control){
+
+    public void addEscuchadorLetras(KeyListener control) {
         this.addKeyListener(control);
     }
-  
-  public JFrame getVentana() {
-        return ventana;
-  }
+
+    public JFrame getVentana() {
+        return this;
+    }
 
 }
