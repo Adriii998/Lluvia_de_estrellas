@@ -5,12 +5,17 @@
  */
 package lluvia_de_estrellas;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
+import javax.swing.JLabel;
+import javax.swing.Timer;
+
 /**
  *
  * @author adri
  */
-import java.awt.event.KeyListener;
-import javax.swing.JButton;
 
 public class Game {
     
@@ -24,7 +29,7 @@ public class Game {
     public Game(){
         view=new Vista(this);
         ctrlLetras=new ControlLetras(this);
-        JButton boton;
+        //JButton boton;
     }
     
   
@@ -33,17 +38,17 @@ public class Game {
         view.addEscuchadorLetras(escucha);
     }
     
-    public void mandarLetra(JButton btn){
-        view.addLetra(btn);
+    public void mandarLetra(JLabel letra){
+        view.addLetra(letra);
     }
     
     public void eliminarLetra(String letra){
         view.deleteLetra(letra);
     }
-    //guille
+   //guille
   public void error() {
         temporizador.start();
-        temporizador = new javax.swing.Timer(1000, new ActionListener() {
+        temporizador = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.getVentana().setBackground(Color.RED);

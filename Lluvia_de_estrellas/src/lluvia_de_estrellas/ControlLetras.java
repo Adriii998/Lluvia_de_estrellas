@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.Timer;
 
+
 /**
  *
  * @author adri
@@ -29,6 +30,7 @@ public class ControlLetras implements KeyListener {
             public void actionPerformed(ActionEvent e) {
                 nuevaLetra();
             }
+
         });
         letras = new NewLetras(this);
 
@@ -44,8 +46,10 @@ public class ControlLetras implements KeyListener {
             System.out.println("CORRECTA");
             juego.eliminarLetra(pulsada);
         } else {
+            System.out.println("letra incorrecta");
             //juego.error();
         }
+        System.out.println("hola");
     }
 
     @Override

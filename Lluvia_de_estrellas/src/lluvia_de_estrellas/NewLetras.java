@@ -5,12 +5,13 @@
  */
 package lluvia_de_estrellas;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.Timer;
+
 
 /**
  *
@@ -21,7 +22,7 @@ public class NewLetras {
     private ControlLetras control;
 
     //private int heightVentana=800;
-    private int widthVentana = 600;
+    private int widthVentana = 800;
 
     private static int HEIGHTPANEL = 50;
     private static int WIDTHPANEL = 50;
@@ -34,9 +35,9 @@ public class NewLetras {
     /*referencia al timer de cada cuanto se mueve una letra*/
     private Timer timerCaida;
 
-    private ArrayList<JButton> botones;
+    private ArrayList<JLabel> botones;
 
-    private JButton boton;
+    private JLabel letra;
 
     public NewLetras(ControlLetras ctrl) {
         this.control = ctrl;
@@ -57,12 +58,20 @@ public class NewLetras {
         timerCaida.start();
     }
 
-    public JButton getLetra() {
-        boton = new JButton(generarLetra());
+    public JLabel getLetra() {
+         
+        
+        
+        letra = new JLabel(generarLetra());
         //de momento es 50 por poner algo
-        boton.setBounds(posXAleatoria(), 0, WIDTHPANEL, HEIGHTPANEL);
-        botones.add(boton);
-        return boton;
+        letra.setBounds(100, 100, WIDTHPANEL, HEIGHTPANEL);
+        letra.setBackground(Color.red);
+        botones.add(letra);
+        
+        
+        System.out.println("Label letra---> "+letra.getText());
+        
+        return letra;
     }
 
     /**
@@ -127,7 +136,7 @@ public class NewLetras {
      * @param
      */
     public void caer() {
-        for (JButton btn : botones) {
+        for (JLabel btn : botones) {
             btn.setBounds(btn.getX(), btn.getY() + 20, 50, 50);
         }
         //boton.setBounds(50, boton.getY()+10, 50, 50);

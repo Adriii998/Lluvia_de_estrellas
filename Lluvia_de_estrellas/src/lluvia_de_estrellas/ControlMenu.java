@@ -1,13 +1,14 @@
+package lluvia_de_estrellas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JMenuBar;
+
 
 public class ControlMenu implements ActionListener {
 
 
     private Game game;
-
+ 
 
     public ControlMenu() {
 

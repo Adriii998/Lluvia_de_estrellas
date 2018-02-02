@@ -1,5 +1,8 @@
+package lluvia_de_estrellas;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 
 public class BarControl implements KeyListener{
     private Bar bar;
