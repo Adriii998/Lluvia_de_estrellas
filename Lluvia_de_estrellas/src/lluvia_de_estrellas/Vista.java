@@ -28,20 +28,28 @@ public class Vista extends JFrame {
     private Jmenubar jmb;
     
     private JPanel panel;
+    
+    private JPanel ventana;
 
     public Vista(Game game) {
+        
+        ventana= (JPanel) this.getContentPane();
+        
+        
         
         this.setLayout(null);
         
         //probando cosas
         //ventana = new JFrame("BARRA");
-        bar = new Bar(game);
+        //bar = new Bar(game);
+        bc=new BarControl(bar);
+        
         jmb = new Jmenubar();
         
         panel=new JPanel();
         panel.setBounds(0, 500, 800, 100);
         panel.setBackground(Color.RED);
-        panel.add(bar);
+       // panel.add(bar);
         this.add(panel);
         
         
@@ -64,9 +72,8 @@ public class Vista extends JFrame {
         
         
         
-        JLabel label=new JLabel("No pinta hijo puta");
-        label.setBounds(50, 50, 50, 50);
-        this.add(label);
+        letra.setBounds(50, 50, 50, 50);
+        this.add(letra);
         this.repaint();
         
         
@@ -93,10 +100,21 @@ public class Vista extends JFrame {
 
     public void addEscuchadorLetras(KeyListener control) {
         this.addKeyListener(control);
+        ventana.addKeyListener(control);
+        System.out.println("hola hola");
     }
 
     public JFrame getVentana() {
         return this;
     }
 
+    public Bar getBar() {
+        return bar;
+    }
+
+    public BarControl getBc() {
+        return bc;
+    }
+    
+    
 }

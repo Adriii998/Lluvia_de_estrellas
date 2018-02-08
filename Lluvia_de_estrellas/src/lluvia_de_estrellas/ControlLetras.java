@@ -16,7 +16,7 @@ import javax.swing.Timer;
  *
  * @author adri
  */
-public class ControlLetras implements KeyListener {
+public class ControlLetras /*implements KeyListener */{
 
     private NewLetras letras;
     private Game juego;
@@ -35,12 +35,26 @@ public class ControlLetras implements KeyListener {
         letras = new NewLetras(this);
 
         this.juego = game;
-        game.vistaAddEscuchadorLetras(this);
+        //game.vistaAddEscuchadorLetras(this);
         timer.start();
     }
 
+    public void recibirLetra(String letra){
+        String pulsada=letra.toUpperCase();
+        
+        if (letras.teclaPulsada(pulsada)) {
+            System.out.println("CORRECTA");
+            juego.eliminarLetra(pulsada);
+        } else {
+            System.out.println("letra incorrecta");
+            juego.error();
+        }
+    }
+    
+    /*
     @Override
     public void keyTyped(KeyEvent e) {
+        System.out.println("PULSADA------>");
         String pulsada = ("" + e.getKeyChar()).toUpperCase();
         if (letras.teclaPulsada(pulsada)) {
             System.out.println("CORRECTA");
@@ -54,13 +68,22 @@ public class ControlLetras implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+System.out.println("PULSADA------>");
+        String pulsada = ("" + e.getKeyChar()).toUpperCase();
+        if (letras.teclaPulsada(pulsada)) {
+            System.out.println("CORRECTA");
+            juego.eliminarLetra(pulsada);
+        } else {
+            System.out.println("letra incorrecta");
+            //juego.error();
+        }
+        System.out.println("hola");
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
+    }*/
 
     public void nuevaLetra() {
         if (letras.getTamañoUsadas() < letras.getTamañoPosibles()) {

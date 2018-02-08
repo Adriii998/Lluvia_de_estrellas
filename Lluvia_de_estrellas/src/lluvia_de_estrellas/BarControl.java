@@ -11,6 +11,17 @@ public class BarControl implements KeyListener{
         this.bar=bar;
     }
 
+    public void recibirTecla(int codigo){
+        if (codigo==KeyEvent.VK_RIGHT){
+            System.out.println("hola1");
+            bar.moverDerecha();
+        }
+
+        if (codigo==KeyEvent.VK_LEFT){
+            System.out.println("hola2");
+            bar.moverIzquierda();
+        }
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {

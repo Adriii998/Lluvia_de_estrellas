@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-
 /**
  *
  * @author adri
@@ -34,10 +33,11 @@ public class NewLetras {
     private int tiempoCaida;
     /*referencia al timer de cada cuanto se mueve una letra*/
     private Timer timerCaida;
+    private int pixelesMover = 1;
 
-    private ArrayList<JLabel> botones;
+    private ArrayList<Letra> letras;
 
-    private JLabel letra;
+    private Letra letra;
 
     public NewLetras(ControlLetras ctrl) {
         this.control = ctrl;
@@ -54,24 +54,24 @@ public class NewLetras {
             }
         });
 
-        botones = new ArrayList();
+        letras = new ArrayList();
         timerCaida.start();
     }
 
     public JLabel getLetra() {
-         
-        
-        
-        letra = new JLabel(generarLetra());
+
+        /*letra = new JLabel(generarLetra());
         //de momento es 50 por poner algo
-        letra.setBounds(100, 100, WIDTHPANEL, HEIGHTPANEL);
+        letra.setBounds(posXAleatoria(), 50, WIDTHPANEL, HEIGHTPANEL);
         letra.setBackground(Color.red);
-        botones.add(letra);
+        letras.add(letra);
+
+        System.out.println("Label letra---> " + letra.getText()+" usadas-> "+usadas);
+        */
+        letra=new Letra(generarLetra());
+        letras.add(letra.getThis());
         
-        
-        System.out.println("Label letra---> "+letra.getText());
-        
-        return letra;
+        return letra.getLetra();
     }
 
     /**
@@ -127,7 +127,7 @@ public class NewLetras {
     //elimina la letra del boton que se ha pulsado
     public void quitarLetra(String letra) {
         int indice = usadas.indexOf(letra);
-
+        letras.remove(indice);
         usadas = usadas.substring(0, indice) + usadas.substring(indice + 1);
     }
 
@@ -136,10 +136,15 @@ public class NewLetras {
      * @param
      */
     public void caer() {
-        for (JLabel btn : botones) {
-            btn.setBounds(btn.getX(), btn.getY() + 20, 50, 50);
+        
+        for (Letra let : letras) {
+            let.mover(pixelesMover);
+            comprobarPos(let);
         }
-        //boton.setBounds(50, boton.getY()+10, 50, 50);
+    }
+    
+    public void comprobarPos(Letra let){
+        
     }
 
     //getter de tamaño usadas y posibles
