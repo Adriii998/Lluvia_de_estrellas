@@ -3,8 +3,10 @@ package lluvia_de_estrellas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import javafx.geometry.Bounds;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -60,7 +62,9 @@ public class Bar{
         //game.actualizarPosBarra(xBarra,(xBarra+anchoBarra),yBarra);
     }
 
-
+    public Rectangle getBounds(){
+        return barra.getBounds();
+    }
 }
 
 

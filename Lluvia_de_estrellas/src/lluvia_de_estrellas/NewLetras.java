@@ -67,10 +67,10 @@ public class NewLetras {
         letras.add(letra);
 
         System.out.println("Label letra---> " + letra.getText()+" usadas-> "+usadas);
-        */
-        letra=new Letra(generarLetra());
+         */
+        letra = new Letra(generarLetra());
         letras.add(letra.getThis());
-        
+
         return letra.getLetra();
     }
 
@@ -80,7 +80,7 @@ public class NewLetras {
      */
     private String generarLetra() {
         String seleccionada = "";
-
+        System.out.println("posibles.lengisaokasdofijwaeoi---->   "+posibles);
         System.out.println("posibles.leng->" + posibles.length());
 
         //coge una letra
@@ -136,15 +136,15 @@ public class NewLetras {
      * @param
      */
     public void caer() {
-        
+
         for (Letra let : letras) {
             let.mover(pixelesMover);
             comprobarPos(let);
         }
     }
-    
-    public void comprobarPos(Letra let){
-        
+
+    public void comprobarPos(Letra let) {
+
     }
 
     //getter de tamaño usadas y posibles
@@ -154,6 +154,35 @@ public class NewLetras {
 
     public int getTamañoPosibles() {
         return posibles.length();
+    }
+
+    public void cambiarNivel(int i) {
+        switch (i) {
+            case 1:
+                posibles = levels.getLEVEL1();
+                tiempoCaida = levels.getCAIDA1();
+                break;
+            case 2:
+                posibles = levels.getLEVEL2();
+                tiempoCaida = levels.getCAIDA2();
+                break;
+            case 3:
+                posibles = levels.getLEVEL3();
+                tiempoCaida = levels.getCAIDA3();
+                break;
+            case 4:
+                posibles = levels.getLEVEL4();
+                tiempoCaida = levels.getCAIDA4();
+                break;
+        }
+        timerCaida.stop();
+        timerCaida=new Timer(tiempoCaida,new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                caer();
+            }
+        });
+        timerCaida.start();
     }
 
 }

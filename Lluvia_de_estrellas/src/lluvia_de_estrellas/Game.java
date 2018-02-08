@@ -6,6 +6,7 @@
 package lluvia_de_estrellas;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -80,9 +81,13 @@ public class Game {
         }
     }
 
-    public void actualizarPosBarra(double x1Barra, double x2Barra, double yBarra) {
+    public void actualizarPosBarra(Rectangle rec) {
         this.x1Barra = x1Barra;
         this.x2Barra = x2Barra;
         this.yBarra = yBarra;
+    }
+    
+    public void pasarNiveles(int i){
+        ctrlLetras.cambiarNivel(i);
     }
 }
