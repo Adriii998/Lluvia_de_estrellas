@@ -37,7 +37,7 @@ public class ControlBarra{
             barra.moverIzquierda();
         }
         
-        //game.actualizarPosBarra(codigo, codigo, codigo);
+        game.actualizarPosBarra(barra.getBounds());
     }
     
     

@@ -27,7 +27,7 @@ public class Vista1 extends JFrame {
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         controlBarra=new ControlBarra(juego,this);
-        controlMenu=new ControlMenu();
+        controlMenu=new ControlMenu(juego);
         this.setJMenuBar(controlMenu.getMenu());
         
         botones=new ArrayList();

@@ -11,7 +11,8 @@ public class ControlMenu implements ActionListener {
     private Game game;
     private Jmenubar menu;
 
-    public ControlMenu() {
+    public ControlMenu(Game juego) {
+        this.game=juego;
         menu=new Jmenubar();
         menu.anadirEscuchadores(this);
     }
@@ -53,12 +54,16 @@ public class ControlMenu implements ActionListener {
             default:
 
         }
+        
+        game.pasarNiveles(4);
 
     }
     
     public JMenuBar getMenu(){
         return menu.getJmenubar();
     }
+    
+    
 
 }
 

@@ -90,5 +90,9 @@ System.out.println("PULSADA------>");
             juego.mandarLetra(letras.getLetra());
         }
     }
+    
+    public void cambiarNivel(int i){
+        letras.cambiarNivel(i);
+    }
 
 }
