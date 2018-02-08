@@ -2,17 +2,18 @@ package lluvia_de_estrellas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JMenuBar;
 
 
 public class ControlMenu implements ActionListener {
 
 
     private Game game;
- 
+    private Jmenubar menu;
 
     public ControlMenu() {
-
-
+        menu=new Jmenubar();
+        menu.anadirEscuchadores(this);
     }
 
 
@@ -53,6 +54,10 @@ public class ControlMenu implements ActionListener {
 
         }
 
+    }
+    
+    public JMenuBar getMenu(){
+        return menu.getJmenubar();
     }
 
 }

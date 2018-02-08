@@ -20,12 +20,16 @@ public class Vista1 extends JFrame {
 
     ArrayList<JLabel> botones;
     private ControlBarra controlBarra;
+    private ControlMenu controlMenu;
 
     public Vista1(Game juego) {
-        this.setBounds(50, 50, 800, 500);
+        this.setBounds(50, 50, 800, 600);
         this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         controlBarra=new ControlBarra(juego,this);
+        controlMenu=new ControlMenu();
+        this.setJMenuBar(controlMenu.getMenu());
+        
         botones=new ArrayList();
         
         this.setVisible(true);
@@ -48,6 +52,7 @@ public class Vista1 extends JFrame {
      public void addLetra(JLabel letra){
          botones.add(letra);
          this.add(letra);
+         this.repaint();
      }
      
      public void deleteLetra(String letra) {

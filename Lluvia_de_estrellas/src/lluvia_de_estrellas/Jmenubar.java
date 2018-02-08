@@ -1,5 +1,6 @@
 package lluvia_de_estrellas;
 
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JMenu;
@@ -20,15 +21,14 @@ public class Jmenubar {
     private JMenuItem level3;
     private JMenuItem level4;
     private JMenuItem level5;
-    private ControlMenu controlMenu;
+    //private ControlMenu controlMenu;
     private JMenuBar jmenubar;
-    private ControlMenu control;
+    //private ControlMenu control;
 
     public Jmenubar() {
 
-        control=new ControlMenu();
+        //control=new ControlMenu();
         creaMenu();
-        anadirEscuchadores();
 
     }
 
@@ -78,7 +78,7 @@ public class Jmenubar {
 
 
 
-    public void anadirEscuchadores(){
+    public void anadirEscuchadores(ActionListener control){
 
         salir.addActionListener(control);
         guardar.addActionListener(control);
@@ -93,7 +93,6 @@ public class Jmenubar {
     }
 
     public JMenuBar getJmenubar() {
-
         return jmenubar;
     }
 

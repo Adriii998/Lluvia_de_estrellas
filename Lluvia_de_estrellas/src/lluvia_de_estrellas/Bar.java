@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 
 public class Bar{
     //private BarControl bc;
-    private double xBarra = 100;
-    private double yBarra = 500;
-    private double anchoBarra = 100;
+    private int xBarra = 100;
+    private int yBarra = 500;
+    private int anchoBarra = 100;
     private ImageIcon imagen;
     
     private JPanel barra;
@@ -28,7 +28,7 @@ public class Bar{
     
     public void crearBarra(){
         barra=new JPanel();
-        barra.setBounds(150, 375, 150, 25);
+        barra.setBounds(xBarra, yBarra, anchoBarra, 10);
         barra.setBackground(Color.BLUE);
     }
     
@@ -47,17 +47,15 @@ public class Bar{
     }
 
 
-    public void paintComponent() {
-        
-    }
-
     public void moverIzquierda() {
         xBarra -= 10;
+        barra.setLocation(xBarra, yBarra);
         //game.actualizarPosBarra(xBarra,(xBarra+anchoBarra),yBarra);
     }
 
     public void moverDerecha() {
         xBarra += 10;
+        barra.setLocation(xBarra, yBarra);
         //repaint();
         //game.actualizarPosBarra(xBarra,(xBarra+anchoBarra),yBarra);
     }
