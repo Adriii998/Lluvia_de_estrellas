@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-
 /**
  *
  * @author adri
@@ -34,6 +33,7 @@ public class NewLetras {
     private int tiempoCaida;
     /*referencia al timer de cada cuanto se mueve una letra*/
     private Timer timerCaida;
+    private int pixelesMover = 1;
 
     private ArrayList<JLabel> botones;
 
@@ -59,18 +59,15 @@ public class NewLetras {
     }
 
     public JLabel getLetra() {
-         
-        
-        
+
         letra = new JLabel(generarLetra());
         //de momento es 50 por poner algo
-        letra.setBounds(100, 100, WIDTHPANEL, HEIGHTPANEL);
+        letra.setBounds(posXAleatoria(), 50, WIDTHPANEL, HEIGHTPANEL);
         letra.setBackground(Color.red);
         botones.add(letra);
-        
-        
-        System.out.println("Label letra---> "+letra.getText());
-        
+
+        System.out.println("Label letra---> " + letra.getText()+" usadas-> "+usadas);
+
         return letra;
     }
 
@@ -127,7 +124,7 @@ public class NewLetras {
     //elimina la letra del boton que se ha pulsado
     public void quitarLetra(String letra) {
         int indice = usadas.indexOf(letra);
-
+        botones.remove(indice);
         usadas = usadas.substring(0, indice) + usadas.substring(indice + 1);
     }
 
@@ -137,7 +134,7 @@ public class NewLetras {
      */
     public void caer() {
         for (JLabel btn : botones) {
-            btn.setBounds(btn.getX(), btn.getY() + 20, 50, 50);
+            btn.setBounds(btn.getX(), btn.getY() + pixelesMover, 50, 50);
         }
         //boton.setBounds(50, boton.getY()+10, 50, 50);
     }
