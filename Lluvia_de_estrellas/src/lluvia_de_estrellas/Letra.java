@@ -25,6 +25,7 @@ public class Letra {
 
     public Letra(String let) {
         crearLetra(let);
+        direccion=true;
     }
 
     public void crearLetra(String let) {
@@ -66,7 +67,7 @@ public class Letra {
     }
     
     public void subir(int pixelesMover){
-        
+        letra.setLocation(letra.getX(), letra.getY()-pixelesMover);
     }
 
 }

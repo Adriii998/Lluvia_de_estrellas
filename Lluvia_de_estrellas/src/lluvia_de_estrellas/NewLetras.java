@@ -138,16 +138,13 @@ public class NewLetras {
     public void caer() {
         
         for (Letra let : letras) {
-            let.mover(this.pixelesMover);
+            let.mover(pixelesMover);
+            comprobarPos(let);
         }
-        /*
-        for (JLabel let : letras) {
-            
-            let
-            
-            btn.setBounds(btn.getX(), btn.getY() + pixelesMover, 50, 50);
-        }*/
-        //boton.setBounds(50, boton.getY()+10, 50, 50);
+    }
+    
+    public void comprobarPos(Letra let){
+        
     }
 
     //getter de tamaño usadas y posibles
