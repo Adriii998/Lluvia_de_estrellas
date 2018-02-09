@@ -62,6 +62,10 @@ public class ControlLetras /*implements KeyListener */{
         return juego.getRect();
     }
     
+    public void setLimit(Rectangle rec){
+        letras.setLimite(rec);
+    }
+    
     //cuando se ha perdido la partida se para el timer de creacion
     //ya el game se encargara de restaurar todo
     public void perder(){
