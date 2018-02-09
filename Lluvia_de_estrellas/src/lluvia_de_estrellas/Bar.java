@@ -65,6 +65,10 @@ public class Bar{
     public Rectangle getBounds(){
         return barra.getBounds();
     }
+    
+        public Rectangle getLimite(){
+        return divisoria.getBounds();
+    }
 }
 
 
