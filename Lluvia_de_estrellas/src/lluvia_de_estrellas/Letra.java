@@ -5,6 +5,7 @@
  */
 package lluvia_de_estrellas;
 
+import java.awt.Font;
 import javax.swing.JLabel;
 
 /**
@@ -30,7 +31,9 @@ public class Letra {
 
     public void crearLetra(String let) {
         letra = new JLabel(let);
-        letra.setBounds(posXAleatoria(), 50, WIDTHPANEL, HEIGHTPANEL);
+        letra.setLocation(posXAleatoria(), 0);
+        letra.setFont(new Font("fuente",Font.TYPE1_FONT,15));
+        letra.setBounds(posXAleatoria(), 50, 15, 15);
         //return letra;
     }
     
@@ -48,6 +51,10 @@ public class Letra {
     //retorna el label creado
     public JLabel getLetra() {
         return letra;
+    }
+    
+    public void cambiarDireccion(){
+        direccion=false;
     }
 
 

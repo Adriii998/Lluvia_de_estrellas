@@ -6,6 +6,7 @@
 package lluvia_de_estrellas;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -38,6 +39,9 @@ public class NewLetras {
     private ArrayList<Letra> letras;
 
     private Letra letra;
+    
+    
+    private Rectangle limite;
 
     public NewLetras(ControlLetras ctrl) {
         this.control = ctrl;
@@ -47,27 +51,14 @@ public class NewLetras {
         posibles = levels.getLEVEL1();
         tiempoCaida = levels.getCAIDA1();
 
-        timerCaida = new Timer(tiempoCaida, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                caer();
-            }
-        });
-
+        
         letras = new ArrayList();
-        timerCaida.start();
+        
+        iniciarTimerCaida();
     }
 
     public JLabel getLetra() {
 
-        /*letra = new JLabel(generarLetra());
-        //de momento es 50 por poner algo
-        letra.setBounds(posXAleatoria(), 50, WIDTHPANEL, HEIGHTPANEL);
-        letra.setBackground(Color.red);
-        letras.add(letra);
-
-        System.out.println("Label letra---> " + letra.getText()+" usadas-> "+usadas);
-         */
         letra = new Letra(generarLetra());
         letras.add(letra.getThis());
 
@@ -80,7 +71,7 @@ public class NewLetras {
      */
     private String generarLetra() {
         String seleccionada = "";
-        System.out.println("posibles.lengisaokasdofijwaeoi---->   "+posibles);
+        System.out.println("posibles.lengisaokasdofijwaeoi---->   " + posibles);
         System.out.println("posibles.leng->" + posibles.length());
 
         //coge una letra
@@ -101,6 +92,11 @@ public class NewLetras {
         return posicion;
     }
 
+    
+    /**
+     * fuera de uso, ahora lo hace la clase letra
+     * @return la posicion en la que se va a colocar en la pantalla
+     */
     public int posXAleatoria() {
         int x = (int) (Math.random() * widthVentana);
         return x;
@@ -144,7 +140,14 @@ public class NewLetras {
     }
 
     public void comprobarPos(Letra let) {
-
+        JLabel letra = let.getLetra();
+        if (letra.getBounds().intersects(control.getRecBarra())) {
+            let.cambiarDireccion();
+        }
+        if (letra.getBounds().intersects(limite) || letra.getY() - letra.getHeight() <= 0) {
+            timerCaida.stop();
+            control.perder();
+        }
     }
 
     //getter de tamaño usadas y posibles
@@ -174,9 +177,25 @@ public class NewLetras {
                 posibles = levels.getLEVEL4();
                 tiempoCaida = levels.getCAIDA4();
                 break;
+            case 5:
+                posibles = levels.getLEVEL5();
+                tiempoCaida = levels.getCAIDA5();
+                break;
         }
         timerCaida.stop();
-        timerCaida=new Timer(tiempoCaida,new ActionListener() {
+        iniciarTimerCaida();
+    }
+    
+    //reiniciar el arrayList de letras
+    //el propio cambiar nivel inicia de nuevo el timer
+    public void restaurar(int nivel){
+        cambiarNivel(nivel);
+        letras.clear();
+        usadas="";
+    }
+    
+    public void iniciarTimerCaida(){
+        timerCaida = new Timer(tiempoCaida, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 caer();
@@ -184,5 +203,8 @@ public class NewLetras {
         });
         timerCaida.start();
     }
-
+    
+    public void setLimite(Rectangle rec){
+        this.limite=rec;
+    }
 }

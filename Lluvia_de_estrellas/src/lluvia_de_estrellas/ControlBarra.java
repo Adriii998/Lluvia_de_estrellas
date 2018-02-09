@@ -5,6 +5,7 @@
  */
 package lluvia_de_estrellas;
 
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 /**
@@ -18,6 +19,7 @@ public class ControlBarra{
     public ControlBarra(Game juego,Vista1 vista){
         barra=new Bar();
         this.game=juego;
+        game.actualizarPosBarra(barra.getBounds());
         
         vista.anadirPanel(barra.getBarra(), barra.getDivisoria());
         
@@ -40,5 +42,8 @@ public class ControlBarra{
         game.actualizarPosBarra(barra.getBounds());
     }
     
+    public Rectangle getLimite(){
+        return barra.getLimite();
+    }
     
 }

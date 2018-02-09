@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Bar{
     //private BarControl bc;
     private int xBarra = 100;
-    private int yBarra = 500;
+    private int yBarra = 475 ;
     private int anchoBarra = 100;
     private ImageIcon imagen;
     
@@ -36,7 +36,7 @@ public class Bar{
     
     public void crearDivisoria(){
         divisoria=new JPanel();
-        divisoria.setBounds(0, 400, 500, 5);
+        divisoria.setBounds(0, 500, 500, 5);
         divisoria.setBackground(Color.BLACK);
     }
 
@@ -64,6 +64,10 @@ public class Bar{
 
     public Rectangle getBounds(){
         return barra.getBounds();
+    }
+        
+    public Rectangle getLimite(){
+        return divisoria.getBounds();
     }
 }
 

@@ -12,9 +12,9 @@ package lluvia_de_estrellas;
 public class Niveles {
     
     private final String LEVEL1="ASDÑLK";
-    private final int CAIDA1=100;
+    private final int CAIDA1=75;
     private final String LEVEL2="ASDFÑLKJ";
-    private final int CAIDA2=75;
+    private final int CAIDA2=50;
     private final String LEVEL3="ASDFGÑLKJH";
     private final int CAIDA3=25;
     private final String LEVEL4="ASDWXÑLKOM";

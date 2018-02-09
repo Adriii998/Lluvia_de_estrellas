@@ -29,14 +29,29 @@ public class Game {
     private Timer temporizador;
     private int contadorTiempo = 0;
     private boolean timerEmpezado = false;
-    private double x1Barra, x2Barra, yBarra;
+    private Rectangle recBarra;
+   
 
+    private boolean finalizado;
+    
+    private Rectangle limite;
+    
+    private int puntos;
+    private int nivel;
+    
     public Game() {
+        finalizado = false;
         view = new Vista1(this);
         ctrlLetras = new ControlLetras(this);
         //JButton boton;
         control = new ControlTeclas(ctrlLetras, view.getControlBarra());
         this.vistaAddEscuchadorLetras(control);
+        limite=view.getControlBarra().getLimite().getBounds();
+        ctrlLetras.setLimit(recBarra);
+        puntos=0;
+        nivel=1;
+        ctrlLetras.restaurar(nivel);//inicia el timer de creacion de letras
+        actualizarNivel();
     }
 
     public void vistaAddEscuchadorLetras(KeyListener escucha) {
@@ -46,48 +61,115 @@ public class Game {
     }
 
     public void mandarLetra(JLabel letra) {
-        view.addLetra(letra);
-    }
-
-    public void eliminarLetra(String letra) {
-        view.deleteLetra(letra);
-    }
-    //guille
-
-    public void error() {
-        if (!timerEmpezado) {
-            temporizador = new Timer(100, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    esperarTiempo();
-                }
-            });
-            temporizador.start();
-            //temporizador.stop();
-            timerEmpezado=true;
+        if (!finalizado) {
+            view.addLetra(letra);
         }
+    }
+
+    public void eliminarLetra(String letra){
+        if(!finalizado){
+            view.deleteLetra(letra);
+            puntos++;
+            view.actualizarPuntos(puntos);
+            isPerdido();
+        }
+    }
+    
+    public void error() {
+        if (!finalizado) {
+            puntos--;
+            view.actualizarPuntos(puntos);
+            if (!timerEmpezado) {
+                temporizador = new Timer(50, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        esperarTiempo();
+                    }
+                });
+                temporizador.start();
+                //temporizador.stop();
+                timerEmpezado = true;
+            }
+            isPerdido();
+        }
+
     }
 
     public void esperarTiempo() {
         contadorTiempo += temporizador.getDelay();
         view.getContentPane().setBackground(Color.RED);
         System.out.println("contador de tiemnpo->>>>> " + contadorTiempo);
-        if (contadorTiempo >= 200) {
+        if (contadorTiempo >= 100) {
             System.out.println("AHORRRRRRRAAAAA");
             temporizador.stop();
-            timerEmpezado=false;
+            timerEmpezado = false;
             contadorTiempo = 0;
             view.getContentPane().setBackground(Color.WHITE);
         }
     }
 
-    public void actualizarPosBarra(Rectangle rec) {
-        this.x1Barra = x1Barra;
-        this.x2Barra = x2Barra;
-        this.yBarra = yBarra;
+    public void isPerdido(){
+        if(puntos<0){
+            /**
+             * llamo al control letras. perder porque ese metodo llama a juego.pausar todo
+             */
+            ctrlLetras.perder();
+        }
+        if(puntos>=10){
+            
+            this.subirNivel();
+        }
+        
     }
     
-    public void pasarNiveles(int i){
-        ctrlLetras.cambiarNivel(i);
+    public void actualizarPosBarra(Rectangle rec) {
+        recBarra = rec;
     }
+
+    //borrara las letras que haya en la pantalla
+    public void pausarTodo() {
+        finalizado=true;
+        view.restaurar();
+    }
+
+    public Rectangle getRect() {
+        return recBarra;
+    }
+
+    public void pasarNiveles(int i) {
+        if(finalizado){
+            finalizado=false;
+            ctrlLetras.restaurar(i);
+        }else{
+            ctrlLetras.cambiarNivel(i);
+            view.restaurar();
+        }
+        puntos=0;
+        nivel=i;
+        view.actualizarPuntos(puntos);
+        view.actualizarNivel(i);//lea pasamos el nivel
+        
+    }
+    
+    public void subirNivel(){
+       
+        if(nivel<5){
+            
+            nivel++;
+            
+            ctrlLetras.restaurar(nivel);
+            view.restaurar();
+            puntos=0;
+            view.actualizarNivel(nivel);
+            
+        }
+      
+    }
+    
+    public void actualizarNivel(){
+        
+        view.actualizarNivel(nivel);
+    }
+    
+    
 }
