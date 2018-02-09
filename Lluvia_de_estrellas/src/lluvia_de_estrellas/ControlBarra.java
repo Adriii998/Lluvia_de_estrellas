@@ -41,5 +41,8 @@ public class ControlBarra{
         game.actualizarPosBarra(barra.getBounds());
     }
     
+    public Rectangle getLimite(){
+        return barra.getLimite();
+    }
     
 }
