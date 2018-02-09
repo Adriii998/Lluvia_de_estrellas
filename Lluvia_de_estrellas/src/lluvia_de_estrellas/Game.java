@@ -30,10 +30,11 @@ public class Game {
     private int contadorTiempo = 0;
     private boolean timerEmpezado = false;
     private Rectangle recBarra;
-    private Rectangle limite;
    
 
     private boolean finalizado;
+    
+    private Rectangle limite;
     
     private int puntos;
     private int nivel;
@@ -46,6 +47,7 @@ public class Game {
         control = new ControlTeclas(ctrlLetras, view.getControlBarra());
         this.vistaAddEscuchadorLetras(control);
         limite=view.getControlBarra().getLimite().getBounds();
+        ctrlLetras.setLimit(recBarra);
         puntos=0;
         nivel=1;
         ctrlLetras.restaurar(nivel);//inicia el timer de creacion de letras
