@@ -140,7 +140,7 @@ public class NewLetras {
         if (letra.getBounds().intersects(control.getRecBarra())) {
             let.cambiarDireccion();
         }
-        if (letra.getY() + letra.getHeight() >= 400 || letra.getY() - letra.getHeight() <= 0) {
+        if (letra.getBounds().intersects(limite.getBounds()) || letra.getY() - letra.getHeight() <= 0) {
             timerCaida.stop();
             control.perder();
         }
