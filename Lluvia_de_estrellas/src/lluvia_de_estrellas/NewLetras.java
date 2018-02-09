@@ -6,6 +6,7 @@
 package lluvia_de_estrellas;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class NewLetras {
     private ArrayList<Letra> letras;
 
     private Letra letra;
+    
+    private Rectangle limite;
 
     public NewLetras(ControlLetras ctrl) {
         this.control = ctrl;
