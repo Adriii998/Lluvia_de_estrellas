@@ -6,7 +6,6 @@
 package lluvia_de_estrellas;
 
 /**
- *
  * @author adri
  */
 public class Lluvia_de_estrellas {
